@@ -1,0 +1,61 @@
+.signalr-state {
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    margin: 7px 0 7px 15px;
+
+    &.unknown {
+        background-color: grey;
+    }
+
+    &.connecting {
+        background-color: darkorange;
+    }
+
+    &.connected {
+        background-color: green;
+    }
+
+    &.disconnected {
+        background-color: red;
+    }
+}
+
+.measurements {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+
+    &.unknown {
+        background-color: grey;
+    }
+
+    &.questionable {
+        background-color: darkorange;
+    }
+
+    &.good {
+        background-color: green;
+    }
+
+    &.dangerous {
+        background-color: red;
+    }
+
+    .name {
+        font-size: 30px;
+        padding: 30px 50px;
+        display: inline-block;
+    }
+
+    .value {
+        font-size: 18px;
+        padding: 0px 30px;
+        display: inline-block;
+    }
+
+    .seconds {
+        font-size: 12px;
+        padding: 0px 20px;
+        display: inline-block;
+    }
+}

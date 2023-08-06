@@ -1,0 +1,18 @@
+<div class="signalr-state" [ngClass]="{ connected: isConnected(), connecting: isConnecting(), disconnected: isDisconnected(), unknown: isUnknown() }"></div>
+
+<div class="measurements" [ngClass]="{ 
+  good: (getValueState(temperature$) | async) === 'good', 
+  questionable: (getValueState(temperature$) | async) === 'questionable',
+  dangerous: (getValueState(temperature$) | async) === 'dangerous',
+  unknown: (getValueState(temperature$) | async) === 'unknown' }">
+  <div class="name">{{getName(temperature$) | async}}</div>
+  <div class="value">
+    <span *ngIf="!(isMeasurement(temperature$) | async)">-</span>
+    <span *ngIf="isMeasurement(temperature$) | async">{{getValue(temperature$) | async}}</span>
+    <span *ngIf="isMeasurement(temperature$) | async">{{getUnit(temperature$) | async}}</span>
+  </div>
+  <div class="seconds">
+    <span *ngIf="(isMeasurement(temperature$) | async) && !(moreThanAMinuteAgo(temperature$) | async)">({{getSecondsAgo(temperature$) | async}}s geleden)</span>
+    <span *ngIf="(isMeasurement(temperature$) | async) && (moreThanAMinuteAgo(temperature$) | async)">(>60s geleden)</span>
+  </div>
+</div>
